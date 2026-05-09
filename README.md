@@ -33,31 +33,31 @@
 
 > List the source node types as a bullet list. For each, one-line reason.
 
-| Source Node Type | Why it is a source |
-| ---------------- | ------------------ |
-| _node type_      | _one-line reason_  |
-| _node type_      | _one-line reason_  |
+| Source Node Type | Why it is a source                                                                                                     |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Entrance         | The Torchbearer starts here, so you need costs from S to every relic and to T                                          |
+| Relic chamber    | After visiting a relic, the next jump could be to any other relic or exit, so you need costs from each relic to others |
 
 ### Part 2b: Distance Storage
 
 > Fill in the table. No prose required.
 
-| Property                    | Your answer |
-| --------------------------- | ----------- |
-| Data structure name         |             |
-| What the keys represent     |             |
-| What the values represent   |             |
-| Lookup time complexity      |             |
-| Why O(1) lookup is possible |             |
+| Property                    | Your answer                                                                     |
+| --------------------------- | ------------------------------------------------------------------------------- |
+| Data structure name         | a dictionary of dictionaries                                                    |
+| What the keys represent     | The keys represent the source nodes and the destination nodes                   |
+| What the values represent   | The values represent the minimum distances from each source to each destination |
+| Lookup time complexity      | O(1)                                                                            |
+| Why O(1) lookup is possible | Dictionary lookups are O(1) in the average case because of hashing              |
 
 ### Part 2c: Precomputation Complexity
 
 > State the total complexity and show the arithmetic. Two to three lines max.
 
-- **Number of Dijkstra runs:** _your answer_
-- **Cost per run:** _your answer_
-- **Total complexity:** _your answer_
-- **Justification (one line):** _your answer_
+- **Number of Dijkstra runs:** You run Dijkstra once from S and once from each relic. If there are k relics, then it is 1 + k runs.
+- **Cost per run:** ASSIGNMENT.md states Dijkstra runs in O(m log n) time, where n = |V| and m = |E|.
+- **Total complexity:** (1 + k) * O(m log n) = O(k m log n)
+- **Justification (one line):** You run one Dijkstra for each source node. There are k + 1 source nodes, and each run takes O(m log n) time.
 
 ---
 

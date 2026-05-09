@@ -22,9 +22,9 @@ I jumped straight into writing run_dijkstra() because I figured Dijkstra was the
 
 ---
 
-## Entry 3 – [Date]: [Short description]
+## Entry 3 – May 9, 2026: Finished Part 2 README
 
-_Your entry here._
+I worked through the questions in Part 2 and filled out the README. I had to figure out which nodes to run Dijkstra from and decide on the right data structure for storing distances. I also calculated the complexity of the Dijkstra precomputation section to be O(k m log n) where k is the number of relics, m is the number of edges, and n is the number of nodes. I think I have a good understanding of the precomputation design now, so I can move on to implementing Dijkstra next.
 
 ---
 
