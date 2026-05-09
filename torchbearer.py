@@ -34,7 +34,18 @@ def explain_problem():
 
     TODO
     """
-    return "TODO"
+    return (
+        "Why a single shortest-path run from S is not enough: "
+        "A single Dijkstra from S only gives cheapest costs from S to each node. "
+        "Once you leave S and reach a relic, you need costs from that relic to the next one, "
+        "which a single run from S cannot provide. "
+        "What decision remains after all inter-location costs are known: "
+        "The order to visit the relics. Knowing every cost between locations still leaves you "
+        "with multiple possible orderings, each with a different total fuel cost. "
+        "Why this requires a search over orders: "
+        "Every possible ordering of the relics produces a different total fuel cost, "
+        "so you have to search over all orderings to find the minimum."
+    )
 
 
 # =============================================================================

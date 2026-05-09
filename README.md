@@ -1,7 +1,7 @@
 # The Torchbearer
 
-**Student Name:** ___________________________
-**Student ID:** ___________________________
+**Student Name:** Ian Hock
+**Student ID:** 129868450
 **Course:** CS 460 – Algorithms | Spring 2026
 
 > This README is your project documentation. Write it the way a developer would document
@@ -17,13 +17,13 @@
 > per question. Each bullet should be 1-2 sentences max.
 
 - **Why a single shortest-path run from S is not enough:**
-  _Your answer here._
+  A single Dijkstra from S only gives cheapest costs from S to each node. Once you leave S and reach a relic, you need costs from that relic to the next one, which a single run from S cannot provide.
 
 - **What decision remains after all inter-location costs are known:**
-  _Your answer here._
+  The order to visit the relics. Knowing every cost between locations still leaves you with multiple possible orderings, each with a different total fuel cost.
 
 - **Why this requires a search over orders (one sentence):**
-  _Your answer here._
+  Every possible ordering of the relics produces a different total fuel cost, so you have to search over all orderings to find the minimum.
 
 ---
 
@@ -34,21 +34,21 @@
 > List the source node types as a bullet list. For each, one-line reason.
 
 | Source Node Type | Why it is a source |
-|---|---|
-| _node type_ | _one-line reason_ |
-| _node type_ | _one-line reason_ |
+| ---------------- | ------------------ |
+| _node type_      | _one-line reason_  |
+| _node type_      | _one-line reason_  |
 
 ### Part 2b: Distance Storage
 
 > Fill in the table. No prose required.
 
-| Property | Your answer |
-|---|---|
-| Data structure name | |
-| What the keys represent | |
-| What the values represent | |
-| Lookup time complexity | |
-| Why O(1) lookup is possible | |
+| Property                    | Your answer |
+| --------------------------- | ----------- |
+| Data structure name         |             |
+| What the keys represent     |             |
+| What the values represent   |             |
+| Lookup time complexity      |             |
+| Why O(1) lookup is possible |             |
 
 ### Part 2c: Precomputation Complexity
 
@@ -126,23 +126,23 @@ _Your answer here._
 > Document the three components of your search state as a table.
 > Variable names here must match exactly what you use in torchbearer.py.
 
-| Component | Variable name in code | Data type | Description |
-|---|---|---|---|
-| Current location | | | |
-| Relics already collected | | | |
-| Fuel cost so far | | | |
+| Component                | Variable name in code | Data type | Description |
+| ------------------------ | --------------------- | --------- | ----------- |
+| Current location         |                       |           |             |
+| Relics already collected |                       |           |             |
+| Fuel cost so far         |                       |           |             |
 
 ### Part 5b: Data Structure for Visited Relics
 
 > Fill in the table.
 
-| Property | Your answer |
-|---|---|
-| Data structure chosen | |
+| Property                                    | Your answer      |
+| ------------------------------------------- | ---------------- |
+| Data structure chosen                       |                  |
 | Operation: check if relic already collected | Time complexity: |
-| Operation: mark a relic as collected | Time complexity: |
-| Operation: unmark a relic (backtrack) | Time complexity: |
-| Why this structure fits | |
+| Operation: mark a relic as collected        | Time complexity: |
+| Operation: unmark a relic (backtrack)       | Time complexity: |
+| Why this structure fits                     |                  |
 
 ### Part 5c: Worst-Case Search Space
 

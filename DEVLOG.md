@@ -16,12 +16,9 @@ Read through the full assignment. The problem is basically finding the cheapest 
 
 ---
 
-## Entry 2 – [Date]: [Short description]
+## Entry 2 – May 9, 2026: Misread the structure, going back to Part 1
 
-> Required. At least one entry must describe a bug, wrong assumption, or design change
-> you encountered. Describe what went wrong and how you resolved it.
-
-_Your entry here._
+I jumped straight into writing run_dijkstra() because I figured Dijkstra was the foundation and everything else would build on it. But after rereading the assignment I noticed the parts are clearly labeled and each one links a README section directly to a function. The written reasoning is supposed to come before the code, not after. That's a wrong assumption I made about the order of work. Scrapping what I had and starting from Part 1 so my documentation actually reflects my thinking instead of being written backwards.
 
 ---
 
