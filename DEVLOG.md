@@ -28,7 +28,13 @@ I worked through the questions in Part 2 and filled out the README. I had to fig
 
 ---
 
-## Entry 4 – [Date]: Post-Implementation Reflection
+## Entry 4 – May 9, 2026: Implemented Part 2 Code
+
+Implemented select_sources, run_dijkstra, and precompute_distances. Everything was pretty straightforward. The hardest part was Dijkstra but we have gone over it several times in class so it was relatively easy. select_sources and precompute_distances were simple once the design was already documented in the README.
+
+---
+
+## Entry 5 – [Date]: Post-Implementation Reflection
 
 > Required. Written after your implementation is complete. Describe what you would
 > change or improve given more time.
