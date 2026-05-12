@@ -46,7 +46,13 @@ Worked through why greedy does not work for this problem. The key issue is that 
 
 ---
 
-## Entry 7 – [Date]: Post-Implementation Reflection
+## Entry 7 – May 11, 2026: Implemented Search Code
+
+Implemented find_optimal_route, _explore, and solve. The structure is a recursive branch and bound over all orderings of the relics. At each step you pick a relic to visit next, recurse, then backtrack by removing it. The base case is when no relics are left, at which point you add the cost to exit and compare against best. The pruning uses dist_table[current_loc][exit_node] as a lower bound on the remaining cost. That value is the shortest possible way to reach exit from here, so if cost_so_far plus that lower bound is already at or above best, no completion of this branch can win. All five provided tests passed, but i still need to finish the README and do some more of my own testing.
+
+---
+
+## Entry 8 – [Date]: Post-Implementation Reflection
 
 > Required. Written after your implementation is complete. Describe what you would
 > change or improve given more time.
