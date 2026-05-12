@@ -72,29 +72,29 @@
 > Do not copy the invariant text from the spec.
 
 - **For nodes already finalized (in S):**
-  _Your answer here._
+  When a node gets popped and added to visited, thhe distance we have for it is guaranteed to be the true shortest distance. It is locked in and we will never find a cheaper one.
 
 - **For nodes not yet finalized (not in S):**
-  _Your answer here._
+  The distance we have here is the best so far, but only using paths that go through already finalized nodes. There could be a cheaper path that goes through non-finalized nodes.
 
 ### Part 3b: Why Each Phase Holds
 
 > One to two bullets per phase. Maintenance must mention nonnegative edge weights.
 
 - **Initialization : why the invariant holds before iteration 1:**
-  _Your answer here._
+  S is empty at the start, so there are no finalized nodes to check. That part holds trivially. dist[source] = 0, which is correct since the cost to reach yourself is zero. Every other node starts at infinity because no paths have been discovered yet.
 
 - **Maintenance : why finalizing the min-dist node is always correct:**
-  _Your answer here._
+  When you pop node u with distance d, that is the smallest tentative distance of any unfinalized node. Any other path to u would have to pass through some unfinalized node w first, and dist[w] >= d. Because edge weights are nonnegative, going from w to u can only add more cost, so nothing can reach u cheaper than d. It is safe to finalize it.
 
 - **Termination : what the invariant guarantees when the algorithm ends:**
-  _Your answer here._
+  When the heap is empty, every reachable node has been finalized. The invariant guarantees that dist[v] is the true shortest distance from the source to every node v. Anything still at infinity was never reachable.
 
 ### Part 3c: Why This Matters for the Route Planner
 
 > One sentence connecting correct distances to correct routing decisions.
 
-_Your answer here._
+If any entry in dist_table were wrong, the search would be comparing bad costs and could pick an ordering that looks optimal but actually burns more fuel than necessary.
 
 ---
 
@@ -105,17 +105,17 @@ _Your answer here._
 > State the failure mode. Then give a concrete counter-example using specific node names
 > or costs (you may use the illustration example from the spec). Three to five bullets.
 
-- **The failure mode:** _Your answer here._
-- **Counter-example setup:** _Your answer here._
-- **What greedy picks:** _Your answer here._
-- **What optimal picks:** _Your answer here._
-- **Why greedy loses:** _Your answer here._
+- **The failure mode:** Greedy always picks the cheapest next relic from the current position. This can lock you into a path that is cheap upfront but forces expensive jumps later.
+- **Counter-example setup:** Nodes S, A, B, T. Relics are A and B. dist[S][A] = 1, dist[S][B] = 5, dist[A][B] = 100, dist[B][A] = 1, dist[A][T] = 1, dist[B][T] = 1.
+- **What greedy picks:** Greedy picks A first since dist[S][A] = 1 is cheaper than dist[S][B] = 5. Then it goes A to B for 100, then B to T for 1. Total cost = 102.
+- **What optimal picks:** Optimal picks B first (cost 5 from S), then A (cost 1 from B), then T (cost 1 from A). Total cost = 7.
+- **Why greedy loses:** Visiting A first is cheap upfront but A connects to B at cost 100. Visiting B first costs more upfront but B connects cheaply to A (cost 1), and A connects cheaply to T (cost 1). Greedy does not account for what each choice costs downstream.
 
 ### What the Algorithm Must Explore
 
 > One bullet. Must use the word "order."
 
-- _Your answer here._
+- The algorithm must search every possible order of visiting the relics because the total fuel cost depends on the full sequence of jumps, not just the cost of each individual step.
 
 ---
 

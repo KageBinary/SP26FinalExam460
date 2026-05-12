@@ -34,7 +34,19 @@ Implemented select_sources, run_dijkstra, and precompute_distances. Everything w
 
 ---
 
-## Entry 5 – [Date]: Post-Implementation Reflection
+## Entry 5 – May 11, 2026: Part 3 Correctness
+
+Worked through the invariant explanation for Dijkstra. The three phases were initialization, maintenance, and termination. Initialization was straightforward since S is empty at the start so there is nothing to be wrong about. Maintenance took the most thought because you have to argue that the min-heap always pops the globally cheapest unfinalized node, and nonneg edge weights are the reason that holds. If weights could be negative you could always find a cheaper path through an unfinalized node later. Termination follows directly once maintenance is proven since every node eventually gets finalized.
+
+---
+
+## Entry 6 – May 11, 2026: Part 4 Search Design
+
+Worked through why greedy does not work for this problem. The key issue is that greedy only looks at the cost of the next step and ignores what that choice forces you into later. I came up with a counter-example using two relics A and B where greedy picks A first because it is closer to S, but going to A traps you into a 100-cost edge to B. Going to B first costs more upfront but leads to cheap edges to A and then T. Greedy total was 102, optimal was 7. That made the failure mode pretty clear.
+
+---
+
+## Entry 7 – [Date]: Post-Implementation Reflection
 
 > Required. Written after your implementation is complete. Describe what you would
 > change or improve given more time.
