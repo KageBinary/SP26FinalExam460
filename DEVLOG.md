@@ -3,11 +3,6 @@
 **Student Name:** Ian Hock
 **Student ID:** 129868450
 
-> Instructions: Write at least four dated entries. Required entry types are marked below.
-> Two to five sentences per entry is sufficient. Write entries as you go, not all in one
-> sitting. Graders check that entries reflect genuine work across multiple sessions.
-> Delete all blockquotes before submitting.
-
 ---
 
 ## Entry 1 – May 7, 2026: Initial Plan
@@ -58,27 +53,22 @@ Wrote the README for Part 6, the pruning stuff. The main thing I had to think th
 
 ---
 
-## Entry 9 – [Date]: Post-Implementation Reflection
+## Entry 9 – May 11, 2026: Post-Implementation Reflection
 
-> Required. Written after your implementation is complete. Describe what you would
-> change or improve given more time.
-
-_Your entry here._
+Everything is done and all five tests pass. If I had more time I would try to make the pruning tighter. Right now the lower bound only accounts for the cost of going straight to exit and completely ignores the relics still left to visit, so the search probably explores more branches than it needs to. A better lower bound that factors in the remaining relics would cut more branches earlier. I would also write more of my own test cases, especially edge cases like a graph where some relics are not reachable or where spawn and exit are the same node.
 
 ---
 
-## Final Entry – [Date]: Time Estimate
-
-> Required. Estimate minutes spent per part. Honesty is expected; accuracy is not graded.
+## Final Entry – May 11, 2026: Time Estimate
 
 | Part                           | Estimated Hours |
 | ------------------------------ | --------------- |
-| Part 1: Problem Analysis       |                 |
-| Part 2: Precomputation Design  |                 |
-| Part 3: Algorithm Correctness  |                 |
-| Part 4: Search Design          |                 |
-| Part 5: State and Search Space |                 |
-| Part 6: Pruning                |                 |
-| Part 7: Implementation         |                 |
-| README and DEVLOG writing      |                 |
-| **Total**                      |                 |
+| Part 1: Problem Analysis       | 0.75            |
+| Part 2: Precomputation Design  | 1.5             |
+| Part 3: Algorithm Correctness  | 0.75            |
+| Part 4: Search Design          | 0.75            |
+| Part 5: State and Search Space | 0.5             |
+| Part 6: Pruning                | 0.75            |
+| Part 7: Implementation         | 1.0             |
+| README and DEVLOG writing      | 1.0             |
+| **Total**                      | **7.0**         |
