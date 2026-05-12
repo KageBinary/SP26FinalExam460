@@ -149,7 +149,7 @@ def dijkstra_invariant_check():
     """
     return """
 For nodes already finalized (in S):
-When a node gets popped and added to visited, thhe distance we have for it is guaranteed to be the true shortest distance. It is locked in and we will never find a cheaper one.
+When a node gets popped and added to visited, the distance we have for it is guaranteed to be the true shortest distance. It is locked in and we will never find a cheaper one.
 
 For nodes not yet finalized (not in S):
 The distance we have here is the best so far, but only using paths that go through already finalized nodes. There could be a cheaper path that goes through non-finalized nodes.

@@ -72,7 +72,7 @@
 > Do not copy the invariant text from the spec.
 
 - **For nodes already finalized (in S):**
-  When a node gets popped and added to visited, thhe distance we have for it is guaranteed to be the true shortest distance. It is locked in and we will never find a cheaper one.
+  When a node gets popped and added to visited, the distance we have for it is guaranteed to be the true shortest distance. It is locked in and we will never find a cheaper one.
 
 - **For nodes not yet finalized (not in S):**
   The distance we have here is the best so far, but only using paths that go through already finalized nodes. There could be a cheaper path that goes through non-finalized nodes.
@@ -126,30 +126,30 @@ If any entry in dist_table were wrong, the search would be comparing bad costs a
 > Document the three components of your search state as a table.
 > Variable names here must match exactly what you use in torchbearer.py.
 
-| Component                | Variable name in code | Data type | Description |
-| ------------------------ | --------------------- | --------- | ----------- |
-| Current location         |                       |           |             |
-| Relics already collected |                       |           |             |
-| Fuel cost so far         |                       |           |             |
+| Component                | Variable name in code  | Data type | Description                                              |
+| ------------------------ | ---------------------- | --------- | -------------------------------------------------------- |
+| Current location         | `current_loc`          | node      | The node the Torchbearer is at right now                 |
+| Relics already collected | `relics_remaining`     | set       | The relics not yet visited (removed as each is visited)  |
+| Fuel cost so far         | `cost_so_far`          | float     | Total fuel spent to reach the current state              |
 
 ### Part 5b: Data Structure for Visited Relics
 
 > Fill in the table.
 
-| Property                                    | Your answer      |
-| ------------------------------------------- | ---------------- |
-| Data structure chosen                       |                  |
-| Operation: check if relic already collected | Time complexity: |
-| Operation: mark a relic as collected        | Time complexity: |
-| Operation: unmark a relic (backtrack)       | Time complexity: |
-| Why this structure fits                     |                  |
+| Property                                    | Your answer                                                                  |
+| ------------------------------------------- | ---------------------------------------------------------------------------- |
+| Data structure chosen                       | set                                                                          |
+| Operation: check if relic already collected | Time complexity: O(1)                                                        |
+| Operation: mark a relic as collected        | Time complexity: O(1)                                                        |
+| Operation: unmark a relic (backtrack)       | Time complexity: O(1)                                                        |
+| Why this structure fits                     | All three operations needed during the search run in O(1) using a Python set |
 
 ### Part 5c: Worst-Case Search Space
 
 > Two bullets.
 
-- **Worst-case number of orders considered:** _Your answer (in terms of k)._
-- **Why:** _One-line justification._
+- **Worst-case number of orders considered:** k! where k is the number of relics.
+- **Why:** The first relic can be any of k choices, the second any of k-1, and so on, giving k * (k-1) * ... * 1 = k! total orderings in the worst case with no pruning.
 
 ---
 
@@ -159,23 +159,23 @@ If any entry in dist_table were wrong, the search would be comparing bad costs a
 
 > Three bullets.
 
-- **What is tracked:** _Your answer here._
-- **When it is used:** _Your answer here._
-- **What it allows the algorithm to skip:** _Your answer here._
+- **What is tracked:** The minimum total fuel cost found so far and the relic ordering that achieved it, stored together in `best` as a mutable list so it can be updated in place across all recursive calls.
+- **When it is used:** Checked at the start of every recursive call before exploring further, and updated in the base case whenever a complete route with a lower total cost is found.
+- **What it allows the algorithm to skip:** Any path where the cost already spent plus the shortest possible remaining distance to exit is already at or above the current best — those paths cannot improve the answer so they are abandoned early.
 
 ### Part 6b: Lower Bound Estimation
 
 > Three bullets.
 
-- **What information is available at the current state:** _Your answer here._
-- **What the lower bound accounts for:** _Your answer here._
-- **Why it never overestimates:** _Your answer here._
+- **What information is available at the current state:** The current location, the fuel cost spent so far, and the precomputed shortest distances between all important nodes in dist_table.
+- **What the lower bound accounts for:** The minimum possible cost to reach the exit from the current location, which is dist_table[current_loc][exit_node].
+- **Why it never overestimates:** It is the shortest possible path from the current location to the exit, ignoring any relics still to visit. The actual remaining cost must be at least this value since the Torchbearer still has to visit more relics before reaching exit.
 
 ### Part 6c: Pruning Correctness
 
 > One to two bullets. Explain why pruning is safe.
 
-- _Your answer here._
+- If cost_so_far + dist_table[current_loc][exit_node] >= best[0], then even finishing this route in the cheapest possible way cannot beat the current best. Since the lower bound never overestimates the remaining cost, cutting this branch cannot throw away the optimal solution.
 
 ---
 

@@ -52,7 +52,13 @@ Implemented find_optimal_route, _explore, and solve. The structure is a recursiv
 
 ---
 
-## Entry 8 – [Date]: Post-Implementation Reflection
+## Entry 8 – May 11, 2026: Part 6 Pruning Documentation and Typo Fix
+
+Wrote the README for Part 6, the pruning stuff. The main thing I had to think through for 6b was why using dist_table[current_loc][exit_node] as a lower bound is safe. It works because that is just the cost to go straight to exit and ignores any relics left to visit, so the real remaining cost can only be higher. Also noticed and fixed a typo in Part 3a where I had typed "thhe" instead of "the" in both the README and the matching string in dijkstra_invariant_check().
+
+---
+
+## Entry 9 – [Date]: Post-Implementation Reflection
 
 > Required. Written after your implementation is complete. Describe what you would
 > change or improve given more time.
